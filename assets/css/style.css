@@ -1,7 +1,7 @@
-/*ESTILO DEL LA NAVBAR*/
-/* Fondo blanco para la barra de navegación */
-.navbar {
-  background-color: white !important; /* Fondo blanco */
+/* NAVBAR */
+/* Fondo celeste pastel para la barra de navegación */
+.navbar { 
+  background-color: #d8f0ff !important; /* Fondo celeste pastel */
   border-bottom: 1px solid #ddd; /* Línea inferior sutil */
   padding: 10px 20px; /* Espaciado interno */
 }
@@ -62,9 +62,8 @@
 .navbar-toggler-icon {
   background-color: #212529; /* Icono oscuro */
 }
-/*ACA TERMINA LOS ESTILOS DE LA NAVBAR*/
 
-/*ESTILO DEL CARRUSEL*/
+/* CARRUSEL */
 .carousel {
   width: 600%; /* Define el ancho como un porcentaje del contenedor padre */
   max-width: 600px; /* Ancho máximo para evitar que se agrande demasiado */
@@ -75,37 +74,25 @@
 
 .carousel-item {
   height: 600px; /* Mantiene el alto definido del carrusel */
-  width: 600;
 }
 
 .carousel-item img {
   width: 100%; /* La imagen ocupará todo el ancho del carrusel */
   height: 100%; /* La imagen ocupará todo el alto del contenedor */
-  
+  object-fit: contain; /* Ajustar imagen al tamaño sin deformarla */
 }
 
-/*ACA TERMINA LOS ESTILOS DEL CARRUSEL*/
-
-/*ESTILOS DE LAS TARJETAS DE PRESENTACIÓN DE LOS ARTICULOS*/
+/* PRODUCTOS */
 /* Estilo para el contenedor principal */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #f9f9f9; /* Fondo suave */
+  background-color: #d8f0ff; /* Fondo celeste pastel */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
   text-align: center; /* Centrar el contenido del contenedor */
   border: 1px solid #ddd; /* Borde fino alrededor del contenedor */
-}
-
-/* Estilo para el título del contenedor principal */
-.container h1 {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center; /* Asegura que el título esté centrado */
-  color: #333;
 }
 
 /* Estilo para la lista de productos */
@@ -120,42 +107,47 @@
   border: 1px solid #ddd; /* Borde para cada ítem */
   border-radius: 10px; /* Bordes redondeados */
   overflow: hidden;
-  background-color: #fff; /* Fondo blanco */
+  background-color: #ffffff; /* Fondo blanco */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   text-align: center; /* Centrar contenido */
   display: flex;
   flex-direction: column; /* Para que las imágenes y texto estén en columna */
   justify-content: space-between;
-  height: 400px; /* Altura fija para todos los ítems (ajustada según el tamaño de la imagen) */
-  width: 100%; /* Para que cada ítem ocupe todo el ancho disponible */
+  height: 400px; /* Altura fija para todos los ítems */
 }
 
-/* Estilo para las imágenes */
-.product-item img {
-  width: 100%; /* Ancho completo del contenedor */
-  height: 60%; /* Altura proporcional para la imagen (ajustable según lo necesites) */
-  object-fit: contain; /* Ajustar imagen al tamaño sin deformarla */
+/* ÚLTIMOS INGRESOS */
+/* Estilo para el contenedor principal */
+.contenedor-principal {
+  width: 90%; /* Ancho del contenedor principal */
+  max-width: 1200px; /* Limita el ancho máximo */
+  margin: 20px auto; /* Centrado con margen superior/inferior */
+  text-align: center; /* Centra el texto y las imágenes */
+  background-color: #d8f0ff; /* Fondo celeste pastel */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-/* Estilo para los detalles del producto */
-.product-details {
-  padding: 10px;
-  flex-grow: 1; /* Hace que ocupe el espacio disponible */
+/* Estilo para cada contenedor de imagen */
+.item {
+  flex: 1; /* Asegura que cada imagen tenga el mismo tamaño */
+  height: 400px; /* Define una altura fija consistente con las tarjetas */
+  overflow: hidden; /* Oculta cualquier parte que sobresalga */
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #ddd; /* Borde similar al de las tarjetas */
+  border-radius: 10px; /* Bordes redondeados */
 }
 
-/* Estilo para el título de cada producto */
-.product-title a {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none; /* Sin subrayado */
+/*QUIENES SOMOS*/
+/* Párrafos */
+p {
+  margin-bottom: 1rem;
+  color: #333; /* Color del texto */
+  font-size: 1rem;
+  line-height: 1.6; /* Mejora la legibilidad */
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
-
-/* Estilo para la descripción de cada producto */
-.product-description {
-  font-size: 1em;
-  color: #555;
-  margin-top: 10px;
-}
-
-/*Aca termina los estilos de las tarjetas de presentación*/
