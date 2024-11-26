@@ -82,72 +82,77 @@
   object-fit: contain; /* Ajustar imagen al tamaño sin deformarla */
 }
 
-/* PRODUCTOS */
-/* Estilo para el contenedor principal */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #d8f0ff; /* Fondo celeste pastel */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-  text-align: center; /* Centrar el contenido del contenedor */
-  border: 1px solid #ddd; /* Borde fino alrededor del contenedor */
+/* Carrusel de imágenes */
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Asegura que las imágenes se ajusten sin distorsión */
 }
 
-/* Estilo para la lista de productos */
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-  gap: 20px; /* Espaciado entre los ítems */
+/* PRODUCTOS */
+.container {
+width: 90%;
+max-width: 1200px;
+margin: 20px auto;
+padding: 20px;
+background-color: #d8f0ff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+text-align: center;
+border: 1px solid #ddd;
 }
 
 /* Estilo para cada ítem */
 .product-item {
-  border: 1px solid #ddd; /* Borde para cada ítem */
-  border-radius: 10px; /* Bordes redondeados */
-  overflow: hidden;
-  background-color: #ffffff; /* Fondo blanco */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  text-align: center; /* Centrar contenido */
-  display: flex;
-  flex-direction: column; /* Para que las imágenes y texto estén en columna */
-  justify-content: space-between;
-  height: 400px; /* Altura fija para todos los ítems */
+border: 1px solid #ddd;
+border-radius: 10px;
+overflow: hidden;
+background-color: #ffffff;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 400px;
 }
 
-/* ÚLTIMOS INGRESOS */
-/* Estilo para el contenedor principal */
+.product-item img {
+width: 100%;
+height: auto;
+}
+
+/* Últimos ingresos */
 .contenedor-principal {
-  width: 90%; /* Ancho del contenedor principal */
-  max-width: 1200px; /* Limita el ancho máximo */
-  margin: 20px auto; /* Centrado con margen superior/inferior */
-  text-align: center; /* Centra el texto y las imágenes */
-  background-color: #d8f0ff; /* Fondo celeste pastel */
-  padding: 20px; /* Espaciado interno */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+width: 90%;
+max-width: 1200px;
+margin: 20px auto;
+text-align: center;
+background-color: #d8f0ff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para cada contenedor de imagen */
 .item {
-  flex: 1; /* Asegura que cada imagen tenga el mismo tamaño */
-  height: 400px; /* Define una altura fija consistente con las tarjetas */
-  overflow: hidden; /* Oculta cualquier parte que sobresalga */
-  background-color: #ffffff; /* Fondo blanco */
-  border: 1px solid #ddd; /* Borde similar al de las tarjetas */
-  border-radius: 10px; /* Bordes redondeados */
+border: 1px solid #ddd;
+border-radius: 10px;
+background-color: #ffffff;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+text-align: center;
+padding: 10px;
 }
 
-/*QUIENES SOMOS*/
-/* Párrafos */
-p {
-  margin-bottom: 1rem;
-  color: #333; /* Color del texto */
-  font-size: 1rem;
-  line-height: 1.6; /* Mejora la legibilidad */
-  background-color: #ffffff; /* Fondo blanco */
-  padding: 10px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+.item img {
+width: 100%;
+height: auto;
+border-radius: 10px;
+}
+
+/* Medios queries para adaptabilidad */
+@media (max-width: 768px) {
+.product-item {
+  height: auto; /* Deja que los productos se ajusten al contenido */
+}
+.contenedor-principal {
+  padding: 10px;
+}
 }
