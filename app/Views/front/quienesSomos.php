@@ -51,8 +51,8 @@
         <!-- Contenedor Ariel -->
         <div class="col-12 col-sm-6 col-md-4">
             <div class="card h-100 text-center border rounded shadow-sm">
-                <img src="assets/img/Staff/arielFundador.jpg" class="card-img-top img-fluid rounded-circle p-3 mx-auto"
-                    alt="Foto de Ariel" style="max-width: 400px;">
+                <img src=<?php echo base_url("assets/img/Staff/arielFundador.jpg" );?> class="card-img-top img-fluid rounded-circle p-3
+                mx-auto" alt="Foto de Ariel" style="max-width: 400px;">
                 <div class="card-body p-4">
                     <h4 class="card-title mb-2">Ariel Gonzalez</h4>
                     <p class="card-subtitle text-muted mb-3">Fundador - Control de Stock</p>
@@ -67,14 +67,16 @@
         <!-- Contenedor Mauri -->
         <div class="col-12 col-sm-6 col-md-4">
             <div class="card h-100 text-center border rounded shadow-sm">
-                <img src="assets/img/Staff/mauriVendedor.jpg" class="card-img-top img-fluid rounded-circle p-3 mx-auto"
-                    alt="Foto de Mauri" style="max-width: 400px;">
+                <img src=<?php echo base_url("assets/img/Staff/mauriVendedor.jpg" );?> class="card-img-top img-fluid rounded-circle p-3
+                mx-auto" alt="Foto de Mauri" style="max-width: 400px;">
                 <div class="card-body p-4">
                     <h4 class="card-title mb-2">Mauricio Aguirre</h4>
                     <p class="card-subtitle text-muted mb-3">Atención al Público - Logística</p>
                     <p class="card-text">
                         Es la cara visible de la tienda, gestionando pedidos y envíos en tiempo y forma a todas las
-                        provincias de Argentina.
+                        provincias de Argentina. Su trato cercano y amigable en nuestra sucursal ha sido clave para
+                        construir
+                        relaciones duraderas con nuestros clientes.
                     </p>
                 </div>
             </div>
@@ -83,14 +85,16 @@
         <!-- Contenedor Yami -->
         <div class="col-12 col-sm-6 col-md-4">
             <div class="card h-100 text-center border rounded shadow-sm">
-                <img src="assets/img/Staff/yamilaCM.jpg" class="card-img-top img-fluid rounded-circle p-3 mx-auto"
-                    alt="Foto de Yami" style="max-width: 400px;">
+                <img src=<?php echo base_url("assets/img/Staff/yamilaCM.jpg" );?>
+                    class="card-img-top img-fluid rounded-circle p-3 mx-auto" alt="Foto de Yami"
+                    style="max-width: 400px;">
                 <div class="card-body p-4">
                     <h4 class="card-title mb-2">Yamila Olvano</h4>
                     <p class="card-subtitle text-muted mb-3">Community Manager</p>
                     <p class="card-text">
-                        Como community manager, gestiona redes sociales y crea contenido para mantener nuestra presencia
-                        online.
+                        Como community manager, su trabajo consiste en gestionar nuestras redes sociales, crear
+                        contenido y promover la tienda a través de diversas plataformas digitales, logrando asi que
+                        nuestros clientes esten informados sobre las novedades de nuestra tienda.
                     </p>
                 </div>
             </div>

@@ -1,8 +1,8 @@
 <!-- Texto introductorio -->
 <p class="texto-comercializacion text-center bordered-text">
     En <strong>FrikiVerse</strong>, trabajamos para ofrecerte una experiencia de compra única, donde puedas encontrar
-    los mejores productos frikis con comodidad y seguridad.
-    Ofrecemos diversas opciones de <strong>entrega, envío y pago</strong> adaptadas a tus necesidades.
+    los productos que buscas teniendo la mejor calidad del mercado.
+    <br>Ofrecemos diversas opciones de <strong>entrega, envío y pago</strong> adaptadas a tus necesidades.
 </p>
 
 </main>
@@ -51,10 +51,14 @@
                             <strong>Si estás fuera de Argentina, contáctanos para más detalles.</strong>
                         </p>
                         <div class="d-flex justify-content-center gap-3">
-                            <a href="https://www.instagram.com/"><img src="assets/img/redes/ig.png" alt="Instagram"
-                                    width="24" height="24"></a>
-                            <a href="https://web.whatsapp.com/"><img src="assets/img/redes/wpp.png" alt="WhatsApp"
-                                    width="24" height="24"></a>
+                            <a href=<?php echo base_url("https://www.instagram.com/");?>>
+                                <img src=<?php echo base_url("assets/img/redes/ig.png");?> alt="Instagram" width="24"
+                                    height="24">
+                            </a>
+                            <a href=<?php echo base_url("https://web.whatsapp.com/");?>>
+                                <img src=<?php echo base_url("assets/img/redes/wpp.png");?> alt="WhatsApp" width="24"
+                                    height="24">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -113,12 +117,15 @@
                             Al realizar tu pedido, recibirás una estimación de la fecha de entrega.
                         </p>
                         <div class="d-flex justify-content-center gap-3">
-                            <a href="https://www.instagram.com/"><img src="assets/img/redes/ig.png" alt="Instagram"
-                                    width="24" height="24"></a>
-                            <a href="https://web.whatsapp.com/"><img src="assets/img/redes/wpp.png" alt="WhatsApp"
-                                    width="24" height="24"></a>
-                            <a href="contacto"><button type="button" class="btn btn-outline-primary btn-sm">Ver
-                                    más...</button></a>
+                            <a href=<?php  echo base_url("https://www.instagram.com/");?>>
+                                <img src="assets/img/redes/ig.png" alt="Instagram" width="24" height="24"></a>
+                            <a href=<?php echo base_url("https://web.whatsapp.com/");?>>
+                                <img src="assets/img/redes/wpp.png" alt="WhatsApp" width="24" height="24">
+                            </a>
+                            <a href=<?php echo base_url("contacto");?>>
+                                <button type="button" class="btn btn-outline-primary btn-sm">
+                                    Ver más...
+                                </button></a>
                         </div>
                     </div>
                 </div>

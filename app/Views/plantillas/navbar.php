@@ -2,11 +2,15 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
 
-        <!-- Boton con el nombre de la pagina -->
-        <a class="navbar-brand" href="<?php echo base_url('principal');?>">FrikiVerse</a>
+        <!-- Logo o ícono que actúa como enlace -->
+        <a class="navbar-brand" href="<?php echo base_url('principal');?>">
+            <img src=<?php echo base_url("assets/img/logo/icono.jpeg");?> alt=" Logo" width="50" height="50"
+                class="d-inline-block align-text-top">
+        </a>
+
 
         <!-- Botón desplegable para móviles -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
