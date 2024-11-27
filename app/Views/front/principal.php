@@ -32,7 +32,7 @@
         <!-- Producto 1 -->
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="product-item">
-                <img src="assets/img/Comics/spiderman1.png" alt="Cómic" class="img-fluid">
+                <img src="assets/img/Comics/spiderman1.jpg" alt="Cómic" class="img-fluid">
                 <div class="product-details">
                     <h2 class="product-title">
                         <a href="comics.html">Cómics</a>
@@ -57,7 +57,7 @@
         <!-- Producto 3 -->
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="product-item">
-                <img src="assets/img/Figuras/figurassjtrunks.png" alt="Figura" class="img-fluid">
+                <img src="assets/img/Figuras/figuraflash.jpg" alt="Figura" class="img-fluid">
                 <div class="product-details">
                     <h2 class="product-title">
                         <a href="figuras.html">Figuras</a>
@@ -69,7 +69,7 @@
         <!-- Producto 4 -->
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="product-item">
-                <img src="assets/img/Merch/remeraspiderman.png" alt="Ropa" class="img-fluid">
+                <img src="assets/img/Merch/remerahellfireclub.jpg" alt="Ropa" class="img-fluid">
                 <div class="product-details">
                     <h2 class="product-title">
                         <a href="ropa.html">Merchandising</a>
@@ -88,25 +88,25 @@
         <!-- Imagen 1 -->
         <div class="col-6 col-md-4 col-lg-3">
             <a href="https://www.example.com/imagen1" target="_blank">
-                <img src="assets/img/Figuras/figurabrolyssj.png" alt="Imagen 1" class="img-fluid">
+                <img src="assets/img/Figuras/figurabrolyssj.jpg" alt="Imagen 1" class="img-fluid">
             </a>
         </div>
         <!-- Imagen 2 -->
         <div class="col-6 col-md-4 col-lg-3">
             <a href="https://www.example.com/imagen2" target="_blank">
-                <img src="assets/img/Figuras/figuragokussj.png" alt="Imagen 2" class="img-fluid">
+                <img src="assets/img/Figuras/figuragokussj.jpg" alt="Imagen 2" class="img-fluid">
             </a>
         </div>
         <!-- Imagen 3 -->
         <div class="col-6 col-md-4 col-lg-3">
             <a href="https://www.example.com/imagen3" target="_blank">
-                <img src="assets/img/Merch/remeraVenom.png" alt="Imagen 3" class="img-fluid">
+                <img src="assets/img/Merch/remeraVenom.jpg" alt="Imagen 3" class="img-fluid">
             </a>
         </div>
         <!-- Imagen 4 -->
         <div class="col-6 col-md-4 col-lg-3">
             <a href="https://www.example.com/imagen4" target="_blank">
-                <img src="assets/img/Merch/remerahellfireclub.png" alt="Imagen 4" class="img-fluid">
+                <img src="assets/img/Merch/remerahellfireclub.jpg" alt="Imagen 4" class="img-fluid">
             </a>
         </div>
     </div>

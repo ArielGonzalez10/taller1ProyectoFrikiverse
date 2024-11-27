@@ -10,12 +10,12 @@
         <!-- Primer contenedor -->
         <div class="col-12 col-md-6">
             <div class="p-3 border rounded shadow-sm">
-                <p>
+                <p class="card-text">
                     En FrikiVerse, somos tres amigos que se unieron para hacer realidad una pasión común. Ariel, Mauri y
                     Yami, nos conocimos en la escuela secundaria, y como muchos de nosotros, buscamos una forma de
                     generar ingresos para nuestros gastos personales.
                 </p>
-                <p>
+                <p class="card-text">
                     Observamos que el mundo de los mangas y cómics estaba ganando cada vez más
                     popularidad, especialmente en las redes sociales, y decidimos apostar por ello.
                 </p>
@@ -25,12 +25,12 @@
         <!-- Segundo contenedor -->
         <div class="col-12 col-md-6">
             <div class="p-3 border rounded shadow-sm">
-                <p>
+                <p class="card-text">
                     Usando nuestros ahorros, invertimos en la idea de abrir una pequeña tienda en la provincia de
                     Corrientes, donde ofreceríamos productos de calidad, al alcance de cualquier persona que tenga ganas
                     de leer y disfrutar de las increíbles historias que nos ofrecen los autores.
                 </p>
-                <p>
+                <p class="card-text">
                     Hoy, FrikiVerse lleva 5 años ofreciendo lo mejor en cómics, mangas, figuras y artículos frikis, y
                     seguimos creciendo gracias al apoyo de nuestra increíble comunidad. ¡Gracias por ser parte de esta
                     aventura!
