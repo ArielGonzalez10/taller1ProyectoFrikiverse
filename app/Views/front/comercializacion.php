@@ -137,7 +137,7 @@
 
 <!-- Texto de cierre -->
 <div class="text-center p-4">
-    <p class="card-text">
+    <p class="texto-comercializacion text-center bordered-text">
         En <strong>FrikiVerse</strong>, queremos que tu experiencia de compra sea lo más fácil y agradable posible.
         <br>¡Gracias por elegirnos, y esperamos verte pronto en nuestra tienda!
     </p>

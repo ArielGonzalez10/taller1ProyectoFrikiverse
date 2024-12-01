@@ -12,4 +12,10 @@
 
         <input type="submit" value="Iniciar Sesión">
     </form>
+    <p class="texto-Formulario">
+        ¿Aun no tienes cuenta? <a href="<?= base_url('registrarse') ?>" class="no-subrayado">Registrate</a>
+    </p>
+    <p class="texto-Formulario">
+        <a href="<?= base_url('iniciarSesion') ?>" class="no-subrayado">¿Olvidaste tu contraseña?</a>
+    </p>
 </div>

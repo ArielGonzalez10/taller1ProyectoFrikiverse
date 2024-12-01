@@ -44,4 +44,8 @@
 
         <input type="submit" value="Registrarse">
     </form>
+
+    <p class="texto-Formulario">
+        ¿Ya tienes cuenta? <a href="<?= base_url('iniciarSesion') ?>" class="no-subrayado">Inicia Sesión</a>
+    </p>
 </div>
