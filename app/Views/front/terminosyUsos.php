@@ -62,10 +62,9 @@
             contacto con nosotros.
         </p>
     </div>
-</div>
-<!-- Agradecimiento -->
-<div class="container-agradecimiento text-center">
+    <!-- Agradecimiento -->
     <h4 class="titulo-agradecimiento display-6 p-5">¡Gracias por elegir Frikiverse!
         <img src="<?php echo base_url("assets/img/logo/icono.jpeg"); ?>" class="term_img" alt="..." width="60">
     </h4>
+
 </div>

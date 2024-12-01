@@ -280,7 +280,7 @@ body {
 .small-container {
   background-color: #A3D8F4;  /* Celeste pastel */
   max-width: 800px; /* Ancho máximo reducido */
-  margin: 0 auto; /* Centra el contenedor */
+  margin: 20 auto; /* Centra el contenedor */
   padding: 20px; /* Espaciado interno */
 }
 
@@ -300,14 +300,7 @@ body {
 .card-text {
   margin-bottom: 15px; /* Espaciado inferior para los párrafos */
   line-height: 1.6; /* Espaciado entre líneas */
-}
-/* Estilo para el título de agradecimiento */
-
-.container-agradecimiento {
-  background-color: #A3D8F4;  /* Celeste pastel */
-  max-width: 800px; /* Ancho máximo reducido */
-  margin: 1 auto; /* Centra el contenedor */
-  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Centra el texto */
 }
 
 
