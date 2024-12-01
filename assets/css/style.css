@@ -81,8 +81,59 @@
   object-fit: contain; /* Ajustar imagen al tamaño sin deformarla */
 }
 
+/* Estilo básico para el contenedor */
+.container {
+  padding: 15px;
+  margin: 0 auto;
+  max-width: 1200px; /* Ajuste del ancho máximo para pantallas grandes */
+}
+
+/* Alineación y espaciado del título */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2.5rem; /* Tamaño de fuente en pantallas grandes */
+}
+
+/* Estilo del párrafo con texto blanco y fondo resaltado */
+.texto-bienvenida {
+  color: white; /* Texto en blanco */
+  background-color: #A3D8F4; /* Fondo del mismo color que la pagina*/
+  font-size: 1.5rem; /* Aumento del tamaño del texto del párrafo */
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px; /* Espaciado dentro del párrafo */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Ajustes específicos para pantallas pequeñas (como móviles) */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2rem; /* Reducir el tamaño del título en pantallas pequeñas */
+  }
+
+  .texto-bienvenida {
+      font-size: 1.2rem; /* Aumento del tamaño del texto en pantallas pequeñas */
+      padding: 15px; /* Añadir espacio dentro del párrafo */
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas (móviles en orientación vertical) */
+@media (max-width: 480px) {
+  h1 {
+      font-size: 1.5rem; /* Hacer el título más pequeño aún en pantallas muy pequeñas */
+  }
+
+  .texto-bienvenida {
+      font-size: 1rem; /* Aumento del tamaño del texto en pantallas muy pequeñas */
+      line-height: 1.4; /* Mejorar la legibilidad en pantallas pequeñas */
+      padding: 10px; /* Reducir el padding en pantallas pequeñas */
+  }
+}
+
+
 /*PRODUCTOS*/
-/* Estilo para el contenedor principal */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -226,4 +277,196 @@ body {
   min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la pantalla */
   margin: 0;
   padding: 0;
+}
+
+/*Formulario de registro*/
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+.form-container input[type="submit"]:hover {
+  background-color: #218838;
+}
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* Estilo general para el contenedor del formulario */
+.form-container {
+  max-width: 500px; /* Máximo ancho del formulario */
+  margin: 0 auto; /* Centra el formulario */
+  padding: 20px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde del formulario */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Color de fondo */
+}
+
+/* Texto centrado */
+.texto-Formulario {
+  text-align: center; /* Centra el texto */
+  color: Black; /* Color de texto negro */
+}
+
+/* Estilos de los campos del formulario */
+input[type="text"],input[type="email"],input[type="tel"],input[type="password"],
+input[type="submit"] {
+  width: 100%; /* Campos ocupan todo el ancho */
+  padding: 10px; /* Espaciado interno */
+  margin: 10px 0; /* Espaciado entre campos */
+  border: 1px solid #ccc; /* Borde de los campos */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+
+/* Estilo para el botón de envío */
+input[type="submit"] {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color de texto del botón */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el cursor por encima */
+}
+
+/* Media queries para hacer que el texto y el contenedor se ajusten en pantallas pequeñas */
+@media (max-width: 600px) {
+  .form-container {
+      padding: 10px; /* Reduce el padding en pantallas pequeñas */
+  }
+  
+  .texto-Formulario {
+      font-size: 1.2em; /* Aumenta el tamaño del texto en pantallas pequeñas */
+  }
+}
+
+/* Estilo general para el contenedor del formulario */
+.form-container {
+  max-width: 500px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 20px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde del formulario */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Color de fondo */
+}
+
+/* Estilo para los encabezados */
+h2 {
+  text-align: center; /* Centra el encabezado */
+}
+
+/* Estilo de los campos del formulario */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%; /* Los campos ocupan todo el ancho */
+  padding: 10px; /* Espaciado interno */
+  margin: 10px 0; /* Espaciado entre campos */
+  border: 1px solid #ccc; /* Borde de los campos */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+
+/* Estilo para el botón de envío */
+input[type="submit"] {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color de texto del botón */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  padding: 10px; /* Espaciado interno del botón */
+  width: 100%; /* El botón ocupa todo el ancho */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el cursor por encima */
+}
+
+/* Media queries para ajustar el diseño en pantallas pequeñas */
+@media (max-width: 600px) {
+  .form-container {
+      padding: 10px; /* Reduce el padding en pantallas pequeñas */
+  }
+}
+
+/*Estilos de la tienda fisica*/
+/* Estilos generales del contenedor */
+.store-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 90%; /* Ocupa un 90% del ancho disponible */
+  box-sizing: border-box;
+}
+
+/* Texto */
+.store-text {
+  color: #000; /* Negro */
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* Imagen */
+.store-image {
+  width: 100%; /* Ajusta el ancho al tamaño del contenedor */
+  max-width: 600px; /* Tamaño máximo de la imagen */
+  height: auto; /* Mantiene las proporciones */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .store-text {
+      font-size: 1rem; /* Reduce el tamaño de fuente */
+  }
+
+  .store-image {
+      max-width: 90%; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+  }
 }

@@ -37,8 +37,9 @@
 
             <!-- Botones de Inicio de Sesión y Registro -->
             <div class="d-flex">
-                <button class="btn btn-outline-dark me-2" type="button">Iniciar Sesión</button>
-                <button class="btn btn-dark" type="button">Registrarse</button>
+                <a class="btn btn-outline-dark me-2" href="<?= base_url('iniciarSesion') ?>">Iniciar Sesión</a>
+                <a class="btn btn-dark" href="<?= base_url('registrarse') ?>">Registrarse</a>
+
             </div>
         </div>
     </div>
