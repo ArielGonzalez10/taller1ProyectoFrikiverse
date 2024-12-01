@@ -1,6 +1,4 @@
 <h2 class="texto-Formulario">¡Bienvenido a FrikiVerse!</h2>
-<p class="texto-Formulario">Regístrate para estar informado sobre las novedades de nuestra tienda.</p>
-
 <div class="form-container">
     <h2>Iniciar Sesión</h2>
     <form action="/login" method="post">
