@@ -37,7 +37,7 @@
         <?php if (isset($errores) && !empty($errores)): ?>
         <div class="error">
             <?php foreach ($errores as $error): ?>
-            <p style="color: red;"><?= esc($error) ?></p>
+            <p><?= esc($error) ?></p>
             <?php endforeach; ?>
         </div>
         <?php endif; ?>

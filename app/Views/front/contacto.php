@@ -29,6 +29,6 @@
     <p class="store-text">
         Para una mejor atención podés acercarte a nuestra tienda, ubicada en La Rioja 850
     </p>
-    <img src=<?php echo base_url("assets/img/Tienda/frikiverseTienda.jpg");?> alt="Imagen de la tienda FrikiVerse"
+    <img src=<?php echo base_url("assets/img/Tienda/frikiverseTienda.jpg"); ?> alt="Imagen de la tienda FrikiVerse"
         class="store-image">
 </div>

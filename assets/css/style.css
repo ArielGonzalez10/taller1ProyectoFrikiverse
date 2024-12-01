@@ -75,10 +75,11 @@
   height: 600px; /* Mantiene el alto definido del carrusel */
 }
 
+/* Asegura que las imágenes se ajusten correctamente dentro del carrusel */
 .carousel-item img {
-  width: 100%; /* La imagen ocupará todo el ancho del carrusel */
-  height: 100%; /* La imagen ocupará todo el alto del contenedor */
-  object-fit: contain; /* Ajustar imagen al tamaño sin deformarla */
+  width: 100%;  /* La imagen ocupará todo el ancho del carrusel */
+  height: 100%;  /* La imagen ocupará todo el alto del contenedor */
+  object-fit: contain;  /* Ajustar imagen al tamaño sin deformarla */
 }
 
 /* Estilo básico para el contenedor */
@@ -211,14 +212,8 @@ h1 {
   flex: 1 1 23%;
 }
 
-/* Asegura que las imágenes se ajusten correctamente dentro del carrusel */
-.carousel-item img {
-  width: 100%;  /* La imagen ocupará todo el ancho del carrusel */
-  height: 100%;  /* La imagen ocupará todo el alto del contenedor */
-  object-fit: contain;  /* Ajustar imagen al tamaño sin deformarla */
-}
 
-/* Últimos ingresos */
+/* ÚLTIMOS INGRESOS*/
 .contenedor-principal {
 width: 90%;
 max-width: 1200px;
@@ -256,7 +251,7 @@ object-fit: contain;
 }
 }
 
-/*Quienes somos*/
+/*QUIENES SOMOS*/
 /* Estilo para los párrafos dentro de los contenedores */
 /* Fondo celeste pastel para los contenedores */
 .container {
@@ -279,13 +274,14 @@ body {
   padding: 0;
 }
 
-/*Formulario de registro*/
+/*REGISTRO*/
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
   margin: 0;
   padding: 0;
 }
+
 .form-container {
   max-width: 400px;
   margin: 50px auto;
@@ -294,15 +290,18 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 .form-container h2 {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .form-container label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
 }
+
 .form-container input[type="text"],
 .form-container input[type="email"],
 .form-container input[type="tel"],
@@ -313,6 +312,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
 .form-container input[type="submit"] {
   width: 100%;
   padding: 10px;
@@ -323,22 +323,24 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
+
 .form-container input[type="submit"]:hover {
   background-color: #218838;
 }
+
 .error {
   color: red;
   font-size: 0.9em;
 }
 
-/* Estilo general para el contenedor del formulario */
-.form-container {
-  max-width: 500px; /* Máximo ancho del formulario */
-  margin: 0 auto; /* Centra el formulario */
-  padding: 20px; /* Espaciado interno */
-  border: 1px solid #ccc; /* Borde del formulario */
-  border-radius: 10px; /* Bordes redondeados */
-  background-color: #f9f9f9; /* Color de fondo */
+@media (max-width: 600px) {
+  .form-container {
+      padding: 10px;
+  }
+
+  .form-container h2 {
+      font-size: 1.2em;
+  }
 }
 
 /* Texto centrado */
@@ -347,27 +349,9 @@ body {
   color: Black; /* Color de texto negro */
 }
 
-/* Estilos de los campos del formulario */
-input[type="text"],input[type="email"],input[type="tel"],input[type="password"],
-input[type="submit"] {
-  width: 100%; /* Campos ocupan todo el ancho */
-  padding: 10px; /* Espaciado interno */
-  margin: 10px 0; /* Espaciado entre campos */
-  border: 1px solid #ccc; /* Borde de los campos */
-  border-radius: 5px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye padding y border en el ancho total */
-}
-
-/* Estilo para el botón de envío */
-input[type="submit"] {
-  background-color: #007bff; /* Color de fondo del botón */
-  color: white; /* Color de texto del botón */
-  border: none; /* Sin borde */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-}
-
-input[type="submit"]:hover {
-  background-color: #0056b3; /* Color de fondo al pasar el cursor por encima */
+/* Estilo para los encabezados */
+h2 {
+  text-align: center; /* Centra el encabezado */
 }
 
 /* Media queries para hacer que el texto y el contenedor se ajusten en pantallas pequeñas */
@@ -380,57 +364,141 @@ input[type="submit"]:hover {
       font-size: 1.2em; /* Aumenta el tamaño del texto en pantallas pequeñas */
   }
 }
+/*REGISTRO*/
 
-/* Estilo general para el contenedor del formulario */
+/*INICIAR SESIÓN*/
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
 .form-container {
-  max-width: 500px; /* Ancho máximo del formulario */
-  margin: 0 auto; /* Centra el contenedor */
-  padding: 20px; /* Espaciado interno */
-  border: 1px solid #ccc; /* Borde del formulario */
-  border-radius: 10px; /* Bordes redondeados */
-  background-color: #f9f9f9; /* Color de fondo */
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para los encabezados */
-h2 {
-  text-align: center; /* Centra el encabezado */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Estilo de los campos del formulario */
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%; /* Los campos ocupan todo el ancho */
-  padding: 10px; /* Espaciado interno */
-  margin: 10px 0; /* Espaciado entre campos */
-  border: 1px solid #ccc; /* Borde de los campos */
-  border-radius: 5px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
 
-/* Estilo para el botón de envío */
-input[type="submit"] {
-  background-color: #007bff; /* Color de fondo del botón */
-  color: white; /* Color de texto del botón */
-  border: none; /* Sin borde */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  padding: 10px; /* Espaciado interno del botón */
-  width: 100%; /* El botón ocupa todo el ancho */
-  border-radius: 5px; /* Bordes redondeados */
+.form-container input[type="email"],
+.form-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-input[type="submit"]:hover {
-  background-color: #0056b3; /* Color de fondo al pasar el cursor por encima */
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-/* Media queries para ajustar el diseño en pantallas pequeñas */
+.form-container input[type="submit"]:hover {
+  background-color: #218838;
+}
+
 @media (max-width: 600px) {
   .form-container {
-      padding: 10px; /* Reduce el padding en pantallas pequeñas */
+      padding: 10px;
+  }
+
+  .form-container h2 {
+      font-size: 1.2em;
   }
 }
+/*INICIAR SESIÓN*/
 
-/*Estilos de la tienda fisica*/
+/*CONTACTO*/
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box; /* Asegura que padding y borde se incluyan en el ancho total */
+}
+
+.form-container textarea {
+  resize: none; /* Deshabilita el cambio de tamaño */
+}
+
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+      padding: 10px;
+  }
+
+  .form-container h2 {
+      font-size: 1.2em;
+  }
+}
+/*CONTACTO*/
+
+/*IMAGEN DE LA TIENDA/
 /* Estilos generales del contenedor */
 .store-container {
   display: flex;
@@ -470,3 +538,92 @@ input[type="submit"]:hover {
       max-width: 90%; /* Reduce el tamaño de la imagen en pantallas pequeñas */
   }
 }
+
+
+/*FOOTER*/
+/* Estilo general para el pie de página */
+footer {
+  background-color: #A3D8F4; /* Color de fondo del pie de página */
+  padding: 20px 0; /* Espaciado interno */
+  width: 100%; /* Asegura que el footer ocupe todo el ancho */
+}
+
+/* Contenedor del pie de página */
+.container {
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+/* Estilo para las columnas del pie de página */
+.row {
+  display: flex; /* Utiliza flexbox para alinear los elementos */
+  justify-content: space-between; /* Espaciado entre columnas */
+  align-items: center; /* Centra verticalmente los elementos */
+  flex-wrap: wrap; /* Permite que las columnas se ajusten en pantallas pequeñas */
+}
+
+/* Estilo para las columnas */
+.col-pie {
+  flex: 1; /* Hace que cada columna ocupe el mismo ancho */
+  text-align: center; /* Centra el texto en cada columna */
+  margin: 10px; /* Espaciado entre columnas */
+}
+
+/* Iconos de los enlaces */
+.icon-footer {
+  width: 40px; /* Ancho fijo para los iconos */
+  height: auto; /* Mantiene la proporción */
+}
+
+.icon-footer-large {
+  width: 90px; /* Ancho fijo para el icono grande */
+  height: auto; /* Mantiene la proporción */
+}
+
+/* Estilo para los enlaces */
+.col-pie a {
+  display: block; /* Hace que los enlaces ocupen toda la línea */
+  margin: 5px 0; /* Espaciado entre enlaces */
+}
+
+/* Estilo para las redes sociales */
+.social-media {
+  display: flex; /* Utiliza flexbox para alinear los iconos de redes */
+  justify-content: center; /* Centra los iconos horizontalmente */
+}
+
+.social-icon {
+  width: 30px; /* Ancho fijo para los iconos de redes sociales */
+  height: auto; /* Mantiene la proporción */
+  margin: 0 5px; /* Espaciado entre iconos de redes sociales */
+}
+
+/* Estilo para el texto del pie de página */
+.footer-text {
+  margin: 0; /* Sin margen para el texto */
+  text-align: center; /* Centra el texto */
+}
+
+/* Estilo para el borde superior del texto */
+.border-top {
+  border-top: 1px solid #ccc; /* Añade un borde superior */
+  padding-top: 5px; /* Espaciado superior */
+}
+
+/* Media Queries para hacer el pie de página responsive */
+@media (max-width: 600px) {
+  .row {
+      flex-direction: column; /* Cambia a dirección columna en pantallas pequeñas */
+      align-items: center; /* Centra horizontalmente los elementos */
+  }
+
+  .social-media {
+      justify-content: center; /* Centra los iconos de redes sociales */
+  }
+
+  .icon-footer,
+  .icon-footer-large {
+      width: 30px; /* Ajusta el tamaño de los iconos en pantallas pequeñas */
+  }
+}
+/*FOOTER*/

@@ -70,5 +70,4 @@
         <h4 class="titulo text-center display-6 p-5">¡Gracias por elegir Frikiverse!
             <img src=<?php echo base_url("assets/img/logo/icono.jpeg");?> class="term_img" alt="..." width="60">
         </h4>
-
     </div>

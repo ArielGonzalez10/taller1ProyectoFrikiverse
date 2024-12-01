@@ -1,0 +1,15 @@
+<h2 class="texto-Formulario">¡Bienvenido a FrikiVerse!</h2>
+<p class="texto-Formulario">Regístrate para estar informado sobre las novedades de nuestra tienda.</p>
+
+<div class="form-container">
+    <h2>Iniciar Sesión</h2>
+    <form action="/login" method="post">
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Iniciar Sesión">
+    </form>
+</div>
