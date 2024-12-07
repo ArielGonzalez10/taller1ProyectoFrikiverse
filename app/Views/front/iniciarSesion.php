@@ -1,10 +1,10 @@
 <h2 class="texto-Formulario">¡Bienvenido a FrikiVerse!</h2>
 <?php if (isset($_SESSION['error'])): ?>
-    <div class="error">
-        <?= $_SESSION['error']; ?>
-        <?php unset($_SESSION['error']); // Limpia el mensaje después de mostrarlo 
+<div class="error">
+    <?= $_SESSION['error']; ?>
+    <?php unset($_SESSION['error']); // Limpia el mensaje después de mostrarlo 
         ?>
-    </div>
+</div>
 <?php endif; ?>
 
 <div class="form-container">
