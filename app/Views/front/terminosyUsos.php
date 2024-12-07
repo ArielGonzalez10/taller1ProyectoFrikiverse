@@ -1,5 +1,5 @@
 <!-- Encabezado de la sección -->
-<h1 class="titulo text-center display-6 p-5">Términos y Usos</h1>
+<h2 class="titulo text-center display-6 p-5">Términos y Usos</h2>
 <!-- Contenedor principal -->
 <div class="small-container">
 
