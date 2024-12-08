@@ -820,3 +820,59 @@ body {
   }
 }
 /* USUARIO */
+/*PRODUCTOS*/
+/* Estilo general para el cuerpo */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8; /* Fondo claro */
+  margin: 0;
+  padding: 20px;
+  text-align: center; /* Centrar el texto en todo el documento */
+}
+
+/* Estilo para el encabezado */
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Estilo para el formulario */
+form {
+  margin-bottom: 20px;
+}
+
+/* Estilo para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Eliminar espacio entre bordes */
+  margin: 0 auto; /* Centrar la tabla */
+}
+
+/* Estilo para las celdas de la tabla */
+th, td {
+  border: 1px solid #ddd; /* Borde fino */
+  padding: 10px; /* Espaciado interno */
+  text-align: center; /* Centrar el texto en las celdas */
+}
+
+/* Estilo para los encabezados de la tabla */
+th {
+  background-color: #f2f2f2; /* Fondo claro para los encabezados */
+}
+
+/* Estilo para los botones */
+button, a.btn {
+  background-color: #b2e0e6; /* Color celeste pastel */
+  color: #000; /* Texto negro */
+  border: none; /* Sin borde */
+  padding: 10px 15px; /* Espaciado interno */
+  text-decoration: none; /* Sin subrayado */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor a puntero */
+  transition: background-color 0.3s; /* Transición para el hover */
+}
+
+/* Estilo para el hover de los botones */
+button:hover, a.btn:hover {
+  background-color: #9dd4db; /* Color más oscuro en hover */
+}
+/*PRODUCTOS*/
