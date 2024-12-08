@@ -77,6 +77,7 @@ $categorias = obtener_categorias($conexion);
             <th>Precio Unitario</th>
             <th>Stock</th>
             <th>ID Categoría</th>
+            <th>Foto</th>
             <?php if ($esAdministrador): ?>
             <th>Modificar</th>
             <th>Eliminar</th>
@@ -91,6 +92,14 @@ $categorias = obtener_categorias($conexion);
             <td><?= htmlspecialchars($producto['precioUnit']); ?></td>
             <td><?= htmlspecialchars($producto['stock']); ?></td>
             <td><?= htmlspecialchars($producto['idCategoria']); ?></td>
+            <td>
+                <?php if (!empty($producto['foto'])): ?>
+                <img src="uploads/productos/<?= htmlspecialchars($producto['foto']); ?>" alt="Foto del Producto"
+                    style="max-width: 100px; max-height: 100px;">
+                <?php else: ?>
+                Sin Imagen
+                <?php endif; ?>
+            </td>
             <?php if ($esAdministrador): ?>
             <td style="text-align: center; border: 1px solid #ddd;">
                 <label>

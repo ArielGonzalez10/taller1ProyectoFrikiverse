@@ -115,62 +115,69 @@ class Home extends Controller
     {
         // Obtener el ID del usuario desde la sesión
         $idUsuario = session('idUsuario');
-
+    
         if (!$idUsuario) {
             return redirect()->to('iniciarSesion')->with('error', 'Debes iniciar sesión para realizar esta acción.');
         }
-
+    
         // Obtener datos del formulario
         $nombre = $this->request->getPost('nombre');
         $apellido = $this->request->getPost('apellido');
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
+        $nroTelefono = $this->request->getPost('nroTelefono');
         $profileImage = $this->request->getFile('profileImage');
-
+    
+        // Validar el número de teléfono
+        if (!ctype_digit($nroTelefono)) { // Verificar que solo contenga dígitos
+            return redirect()->back()->with('error', 'El número de teléfono debe contener solo dígitos.');
+        }
+        $nroTelefono = intval($nroTelefono); // Convertir a un valor entero
+    
         // Validar y procesar la imagen (si fue enviada)
         $imagePath = null;
         if ($profileImage && $profileImage->isValid()) {
             $imagePath = 'uploads/perfiles/' . $profileImage->getRandomName();
             $profileImage->move('uploads/perfiles', $imagePath);
         }
-
+    
         // Conectar a la base de datos
         $db = \Config\Database::connect();
         $builder = $db->table('usuario');
-
+    
         // Datos a actualizar
         $data = [
             'nombre' => $nombre,
             'apellido' => $apellido,
             'correoElectronico' => $email,
+            'nroTelefono' => $nroTelefono, // Validado y limpio
         ];
-
+    
         // Si hay imagen, agregarla al array
         if ($imagePath) {
             $data['foto_perfil'] = $imagePath;
         }
-
+    
         // Solo actualizar la contraseña si se ha ingresado una nueva
         if (!empty($password)) {
-            // Aquí puedes decidir si quieres que se haga el hashing o no
-            $data['contrasenia'] = $password; // Solo actualizar si se proporciona una nueva contraseña
+            $data['contrasenia'] = $password; // Actualizar solo si se proporciona una nueva contraseña
         }
-
+    
         // Actualizar datos en la base de datos
         $builder->where('idUsuario', $idUsuario);
         $actualizado = $builder->update($data);
-
+    
         // Validar si se realizó la actualización
         if ($actualizado) {
             // Actualizar los datos de la sesión
             session()->set('nombre', $nombre);
             session()->set('apellido', $apellido);
-
+    
             return redirect()->to('principal')->with('mensaje', 'Datos actualizados correctamente.');
         } else {
             return redirect()->back()->with('error', 'Error al actualizar los datos.');
         }
-    }
+    }    
 
     public function productos()
     {

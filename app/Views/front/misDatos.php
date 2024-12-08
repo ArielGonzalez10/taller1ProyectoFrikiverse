@@ -17,11 +17,15 @@
                 <label for="apellido">Apellido</label>
                 <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
 
+                <label for="nroTelefono">Número de Teléfono</label>
+                <input type="text" id="nroTelefono" name="nroTelefono" placeholder="Ingresa tu número de teléfono"
+                    required>
+
                 <label for="email">Correo Electrónico</label>
                 <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
 
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
 
                 <div class="buttons">
                     <button type="submit" class="save-btn">Guardar</button>
