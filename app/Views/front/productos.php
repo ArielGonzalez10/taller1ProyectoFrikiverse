@@ -1,5 +1,4 @@
 <h1>Listado de Productos</h1>
-
 <form method="get" action="<?= site_url('productos'); ?>" style="display: flex; align-items: center; gap: 10px;">
     <!-- Lista desplegable de categorías -->
     <select name="categoria" onchange="this.form.submit();" style="max-width: 200px;">
@@ -23,13 +22,12 @@
 
     <?php if (session()->get('idRol') == 1): // Verifica si es administrador 
     ?>
-    <a href="<?= site_url('productos/modificar'); ?>" class="btn btn-primary">Agregar Producto</a>
-    <button type="submit" name="eliminar_productos" class="btn btn-danger">Eliminar Producto</button>
+    <a href="<?= site_url('agregarProducto'); ?>" class="btn btn-primary">Agregar Producto</a>
+
     <?php endif; ?>
 </form>
 
-
-<form method="post" action="<?= site_url('cargarProductos'); ?>">
+<form method="post" action="<?= site_url('eliminarProducto'); ?>">
     <table>
         <thead>
             <tr>
@@ -40,6 +38,7 @@
                 <th>Stock</th>
                 <th>ID Categoría</th>
                 <th>Foto</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -47,21 +46,13 @@
             <?php foreach ($productos as $producto): ?>
             <tr>
                 <td>
+                    <!-- Checkbox para seleccionar productos -->
                     <input type="checkbox" name="productos[]" value="<?= htmlspecialchars($producto['idProducto']); ?>">
                 </td>
                 <td><?= htmlspecialchars($producto['idProducto']); ?></td>
-                <td>
-                    <input type="text" name="descripcion[<?= htmlspecialchars($producto['idProducto']); ?>]"
-                        value="<?= htmlspecialchars($producto['descripcion']); ?>" required>
-                </td>
-                <td>
-                    <input type="number" name="precioUnit[<?= htmlspecialchars($producto['idProducto']); ?>]"
-                        value="<?= htmlspecialchars($producto['precioUnit']); ?>" required step="0.01">
-                </td>
-                <td>
-                    <input type="number" name="stock[<?= htmlspecialchars($producto['idProducto']); ?>]"
-                        value="<?= htmlspecialchars($producto['stock']); ?>" required>
-                </td>
+                <td><?= htmlspecialchars($producto['descripcion']); ?></td>
+                <td><?= htmlspecialchars($producto['precioUnit']); ?></td>
+                <td><?= htmlspecialchars($producto['stock']); ?></td>
                 <td><?= htmlspecialchars($producto['idCategoria']); ?></td>
                 <td>
                     <?php if (!empty($producto['foto'])): ?>
@@ -71,18 +62,21 @@
                     Sin Imagen
                     <?php endif; ?>
                 </td>
+                <td>
+                    <!-- Botón para modificar -->
+                    <a href="<?= site_url('modificarProducto/' . htmlspecialchars($producto['idProducto'])); ?>"
+                        class="btn btn-warning">Modificar</a>
+                </td>
             </tr>
             <?php endforeach; ?>
             <?php else: ?>
             <tr>
-                <td colspan="7">No hay productos disponibles</td>
+                <td colspan="8">No hay productos disponibles</td>
             </tr>
             <?php endif; ?>
         </tbody>
     </table>
 
-    <?php if (session()->get('idRol') == 1): // Verifica si es administrador 
-    ?>
-    <button type="submit" name="guardar_cambios" class="btn btn-primary">Guardar Cambios</button>
-    <?php endif; ?>
+    <!-- Botón para eliminar los productos seleccionados -->
+    <button type="submit" class="btn btn-danger">Eliminar Seleccionados</button>
 </form>

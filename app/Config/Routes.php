@@ -20,6 +20,9 @@ $routes->get('cerrarSesion', 'sesionController::cerrarSesion');
 $routes->get('misDatos', 'Home::modificarDatos');
 $routes->post('misDatos', 'Home::modificar');
 $routes->get('productos', 'productosController::productos'); // Ruta para listar productos
-$routes->post('productos/modificar', 'productosController::modificarProducto'); // Ruta para modificar producto
-$routes->post('productos/eliminar', 'productosController::eliminarProducto'); // Ruta para eliminar producto
+$routes->get('modificarProducto/(:num)', 'productosController::modificarProducto/$1'); // Ruta para cargar el formulario de edición
+$routes->post('modificarProducto', 'productosController::modificarProducto'); // Ruta para guardar cambios
+$routes->post('eliminarProducto', 'productosController::eliminarProductos'); // Ruta para eliminar producto
 $routes->post('registrarse', 'Home::registrarUsuario');
+$routes->get('agregarProducto', 'Home::agregarProducto'); // Ruta para cargar el formulario
+$routes->post('agregarProducto', 'productosController::guardarProducto');    // Ruta para guardar el producto
