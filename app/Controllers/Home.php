@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\CategoriaModel;
+use App\Models\ProductoModel;
 
 class Home extends Controller
 {
@@ -62,126 +64,46 @@ class Home extends Controller
         return view('plantillas/header', $data) . view('plantillas/navbar') . view('front/misDatos') . view('plantillas/footer');
     }
 
-    public function inicio_sesion()
-    {
-        $correo = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+    public function productos() 
+{
+    $data['titulo'] = 'Productos';
 
-        // Conexión a la base de datos
-        $db = \Config\Database::connect();
-
-        // Consulta para verificar usuario y obtener datos
-        $query = $db->table('usuario')
-            ->select('idUsuario, nombre, apellido, idRol') // Asegúrate de seleccionar idUsuario
-            ->where('correoElectronico', $correo)
-            ->where('contrasenia', $password)
-            ->get();
-
-
-        // Validación de usuario
-        if ($query->getNumRows() > 0) {
-            $usuario = $query->getRow();
-
-            // Almacenar datos en la sesión
-            session()->set([
-                'idUsuario' => $usuario->idUsuario, // Asegúrate de que este campo exista y tenga un valor válido
-                'rol' => $usuario->idRol == 1 ? 'Administrador' : 'Cliente',
-                'nombre' => $usuario->nombre,
-                'apellido' => $usuario->apellido,
-            ]);
-
-
-            // Redirigir al usuario a la página principal
-            return redirect()->to('principal');
-        } else {
-            // Redirigir con mensaje de error
-            session()->setFlashdata('error', 'Credenciales inválidas');
-            return redirect()->to('iniciarSesion');
-        }
-    }
-    public function cerrar_sesion()
-    {
-        // Verifica si hay una sesión activa
-        if (session()->get('rol')) {
-            // Destruir la sesión
-            session()->destroy();
-        }
-
-        // Redirigir a la página de inicio de sesión
-        return redirect()->to('iniciarSesion');
+    // Inicia sesión si aún no está iniciada
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
 
-    public function modificar()
-    {
-        // Obtener el ID del usuario desde la sesión
-        $idUsuario = session('idUsuario');
-    
-        if (!$idUsuario) {
-            return redirect()->to('iniciarSesion')->with('error', 'Debes iniciar sesión para realizar esta acción.');
-        }
-    
-        // Obtener datos del formulario
-        $nombre = $this->request->getPost('nombre');
-        $apellido = $this->request->getPost('apellido');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $nroTelefono = $this->request->getPost('nroTelefono');
-        $profileImage = $this->request->getFile('profileImage');
-    
-        // Validar el número de teléfono
-        if (!ctype_digit($nroTelefono)) { // Verificar que solo contenga dígitos
-            return redirect()->back()->with('error', 'El número de teléfono debe contener solo dígitos.');
-        }
-        $nroTelefono = intval($nroTelefono); // Convertir a un valor entero
-    
-        // Validar y procesar la imagen (si fue enviada)
-        $imagePath = null;
-        if ($profileImage && $profileImage->isValid()) {
-            $imagePath = 'uploads/perfiles/' . $profileImage->getRandomName();
-            $profileImage->move('uploads/perfiles', $imagePath);
-        }
-    
-        // Conectar a la base de datos
-        $db = \Config\Database::connect();
-        $builder = $db->table('usuario');
-    
-        // Datos a actualizar
-        $data = [
-            'nombre' => $nombre,
-            'apellido' => $apellido,
-            'correoElectronico' => $email,
-            'nroTelefono' => $nroTelefono, // Validado y limpio
-        ];
-    
-        // Si hay imagen, agregarla al array
-        if ($imagePath) {
-            $data['foto_perfil'] = $imagePath;
-        }
-    
-        // Solo actualizar la contraseña si se ha ingresado una nueva
-        if (!empty($password)) {
-            $data['contrasenia'] = $password; // Actualizar solo si se proporciona una nueva contraseña
-        }
-    
-        // Actualizar datos en la base de datos
-        $builder->where('idUsuario', $idUsuario);
-        $actualizado = $builder->update($data);
-    
-        // Validar si se realizó la actualización
-        if ($actualizado) {
-            // Actualizar los datos de la sesión
-            session()->set('nombre', $nombre);
-            session()->set('apellido', $apellido);
-    
-            return redirect()->to('principal')->with('mensaje', 'Datos actualizados correctamente.');
-        } else {
-            return redirect()->back()->with('error', 'Error al actualizar los datos.');
-        }
-    }    
-
-    public function productos()
-    {
-        $data['titulo'] = 'Productos';
-        return view('plantillas/header', $data) . view('plantillas/navbar') . view('front/productos') . view('plantillas/footer');
+    // Verifica si hay una sesión iniciada
+    if (!isset($_SESSION['idUsuario'])) {
+        return redirect()->to('principal'); // Redirige si no hay sesión
     }
+
+    // Obtener el idRol y idUsuario del usuario
+    $idRol = $_SESSION['idRol'] ?? null; // Obtiene el idRol, si existe
+    $idUsuario = $_SESSION['idUsuario'] ?? null; // Obtiene el idUsuario, si existe
+
+    // Cargar productos y categorías desde los modelos
+    $productoModel = new ProductoModel();
+    $categoriaModel = new CategoriaModel();
+    
+    $productos = $productoModel->findAll(); // Obtener todos los productos
+    $categorias = $categoriaModel->findAll(); // Obtener todas las categorías
+
+    // Pasa los datos a la vista
+    return view('plantillas/header', $data) . 
+        view('plantillas/navbar', [
+            'idRol' => $idRol, // Pasa el idRol a la vista de la navbar
+            'idUsuario' => $idUsuario // Pasa el idUsuario a la vista de la navbar
+        ]) . 
+        view('front/productos', [
+            'productos' => $productos,
+            'categorias' => $categorias,
+            'idRol' => $idRol, // Pasa el idRol a la vista de productos
+            'idUsuario' => $idUsuario // Pasa el idUsuario a la vista de productos
+        ]) . 
+        view('plantillas/footer');
+}
+
+
+
 }

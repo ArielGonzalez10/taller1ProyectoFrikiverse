@@ -1,7 +1,3 @@
-<?php
-$usuarioRol = session('rol'); // Obtiene el rol de la sesión
-$usuarioNombre = session('nombre'); // Obtiene el nombre de la sesión, si es necesario
-?>
 <!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -27,11 +23,12 @@ $usuarioNombre = session('nombre'); // Obtiene el nombre de la sesión, si es ne
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('comercializacion'); ?>">Comercialización</a>
                 </li>
-                <?php if (session('idUsuario')): // Verifica si hay sesión activa ?>
+                <?php if (session('idUsuario') !== null): // Verifica si hay sesión activa ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('productos'); ?>">Productos</a>
                 </li>
                 <?php endif; ?>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('quienesSomos'); ?>">¿Quiénes Somos?</a>
                 </li>
@@ -45,7 +42,8 @@ $usuarioNombre = session('nombre'); // Obtiene el nombre de la sesión, si es ne
 
             <!-- Condiciones para mostrar diferentes elementos -->
             <div class="d-flex align-items-center">
-                <?php if ($usuarioRol == 'Cliente'): ?>
+                <?php if (session('idUsuario') !== null): // Solo muestra las siguientes opciones si hay sesión activa ?>
+                <?php if (session('idRol') == 2): // Asumiendo que 2 es el ID para Cliente ?>
                 <!-- Opciones para Cliente -->
                 <input type="search" class="form-control me-2" placeholder="Buscar..." aria-label="Buscar">
                 <div class="dropdown">
@@ -60,7 +58,7 @@ $usuarioNombre = session('nombre'); // Obtiene el nombre de la sesión, si es ne
                         </li>
                     </ul>
                 </div>
-                <?php elseif ($usuarioRol == 'Administrador'): ?>
+                <?php elseif (session('idRol') == 1): // Asumiendo que 1 es el ID para Administrador ?>
                 <!-- Opciones para Administrador -->
                 <a class="btn btn-outline-dark me-2" href="<?php echo base_url('adminPanel'); ?>">Administrar</a>
                 <div class="dropdown">
@@ -75,6 +73,7 @@ $usuarioNombre = session('nombre'); // Obtiene el nombre de la sesión, si es ne
                         </li>
                     </ul>
                 </div>
+                <?php endif; ?>
                 <?php else: ?>
                 <!-- Botones de Inicio de Sesión y Registro -->
                 <a class="btn btn-outline-dark me-2" href="<?php echo base_url('iniciarSesion'); ?>">Iniciar Sesión</a>

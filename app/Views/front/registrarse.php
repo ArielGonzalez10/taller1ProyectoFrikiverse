@@ -18,7 +18,7 @@
     </div>
     <?php endif; ?>
 
-    <form action="/registro" method="POST" id="registerForm">
+    <form action="<?= base_url('registrarse') ?>" method="POST" id="registerForm">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required>
 

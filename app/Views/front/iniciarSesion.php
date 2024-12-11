@@ -5,7 +5,9 @@
     <?php unset($_SESSION['error']); // Limpia el mensaje después de mostrarlo 
         ?>
 </div>
-<?php endif; ?>
+
+<?php endif;
+?>
 
 <div class="form-container">
     <h2>Iniciar Sesión</h2>
