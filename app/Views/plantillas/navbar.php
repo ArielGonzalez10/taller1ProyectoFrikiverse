@@ -45,6 +45,11 @@
                 <?php if (session('idUsuario') !== null): // Solo muestra las siguientes opciones si hay sesión activa ?>
                 <?php if (session('idRol') == 2): // Asumiendo que 2 es el ID para Cliente ?>
                 <!-- Opciones para Cliente -->
+                <!-- Botón de carrito -->
+                <a class="btn btn-light me-2" href="<?php echo base_url('carrito'); ?>">
+                    <img src="<?php echo base_url('ruta_a_imagen_carrito.png'); ?>" alt="Carrito" width="30"
+                        height="30">
+                </a>
                 <input type="search" class="form-control me-2" placeholder="Buscar..." aria-label="Buscar">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"

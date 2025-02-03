@@ -224,6 +224,90 @@ h1 {
 /*CARRUSEL*/
 
 /*PRODUCTOS*/
+/* Contenedor principal de productos */
+.product-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #A3D8F4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Filas y columnas de productos */
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-col {
+  flex: 1 1 100%; /* Base 100% */
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .product-col {
+      flex: 1 1 48%; /* Base 50% */
+  }
+}
+
+@media (min-width: 768px) {
+  .product-col {
+      flex: 1 1 32%; /* Base 33% */
+  }
+}
+
+@media (min-width: 992px) {
+  .product-col {
+      flex: 1 1 23%; /* Base 25% */
+  }
+}
+
+/* Tarjetas de producto */
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Ajusta automáticamente según el contenido */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.product-info {
+  padding: 10px;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.product-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
 .container {
   width: 90%;
   max-width: 1200px;
@@ -301,45 +385,6 @@ h1 {
   flex: 1 1 23%;
 }
 /*PRODUCTOS*/
-
-/* ÚLTIMOS INGRESOS*/
-.contenedor-principal {
-width: 90%;
-max-width: 1200px;
-margin: 20px auto;
-text-align: center;
-background-color: #A3D8F4;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.item {
-border: 1px solid #ddd;
-border-radius: 10px;
-background-color: #ffffff;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-text-align: center;
-padding: 10px;
-}
-
-.item img {
-width: 100%;
-height: auto;
-border-radius: 10px;
-object-fit: contain;
-}
-
-/* Medios queries para adaptabilidad */
-@media (max-width: 768px) {
-.product-item {
-  height: auto; /* Deja que los productos se ajusten al contenido */
-}
-.contenedor-principal {
-  padding: 10px;
-}
-}
-/*ULTIMOS INGRESOS*/
 
 /*QUIENES SOMOS*/
 /* Estilo para los párrafos dentro de los contenedores */
@@ -823,59 +868,284 @@ body {
 }
 /* USUARIO */
 
-/*PRODUCTOS*/
-/* Estilo general para el cuerpo */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8; /* Fondo claro */
-  margin: 0;
-  padding: 20px;
-  text-align: center; /* Centrar el texto en todo el documento */
-}
-
-/* Estilo para el encabezado */
-h1 {
-  margin-bottom: 20px;
-}
-
-/* Estilo para el formulario */
-form {
-  margin-bottom: 20px;
-}
-
-/* Estilo para la tabla */
-table {
+/*Productos*/
+/* Estilos para la tabla personalizada */
+.table-custom {
   width: 100%;
-  border-collapse: collapse; /* Eliminar espacio entre bordes */
-  margin: 0 auto; /* Centrar la tabla */
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-/* Estilo para las celdas de la tabla */
-th, td {
-  border: 1px solid #ddd; /* Borde fino */
-  padding: 10px; /* Espaciado interno */
-  text-align: center; /* Centrar el texto en las celdas */
+/* Estilos para los encabezados */
+.table-custom th {
+  background-color: #007bff; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 10px;
+  text-align: center;
 }
 
-/* Estilo para los encabezados de la tabla */
-th {
-  background-color: #f2f2f2; /* Fondo claro para los encabezados */
+/* Estilos para las celdas */
+.table-custom th, .table-custom td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-/* Estilo para los botones */
-button, a.btn {
-  background-color: #b2e0e6; /* Color celeste pastel */
-  color: #000; /* Texto negro */
-  border: none; /* Sin borde */
-  padding: 10px 15px; /* Espaciado interno */
-  text-decoration: none; /* Sin subrayado */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor a puntero */
-  transition: background-color 0.3s; /* Transición para el hover */
+/* Ajustar tamaño de imágenes de productos */
+.table-custom td img {
+  width: 60px; /* Tamaño mediano */
+  height: 60px;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+  border-radius: 5px;
 }
 
-/* Estilo para el hover de los botones */
-button:hover, a.btn:hover {
-  background-color: #9dd4db; /* Color más oscuro en hover */
+/* Estilos para filas alternas */
+.table-custom tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
-/*PRODUCTOS*/
+
+/* Hacer la tabla responsiva */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Estilos específicos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .table-custom th, .table-custom td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .table-custom td img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-custom {
+    font-size: 12px;
+  }
+
+  .table-custom th, .table-custom td {
+    padding: 6px;
+  }
+  
+  .table-custom td img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/*Productos*/
+
+/*MODIFICAR PRODUCTO*/
+/* Estilo para el formulario de modificar producto */
+.form-modificar-producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 500px; /* Máximo ancho del formulario */
+  width: 100%; /* Asegura que el formulario se ajuste a la pantalla */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+.form-modificar-producto label {
+  width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-modificar-producto input[type="text"],
+.form-modificar-producto input[type="number"],
+.form-modificar-producto select,
+.form-modificar-producto input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+/* Estilo para el botón de guardar cambios */
+.btn-guardar-cambios {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%; /* Botón ocupará todo el ancho disponible */
+}
+
+.btn-guardar-cambios:hover {
+  background-color: #218838;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+  .form-modificar-producto {
+    padding: 15px; /* Menos padding en pantallas pequeñas */
+  }
+
+  .form-modificar-producto input[type="text"],
+  .form-modificar-producto input[type="number"],
+  .form-modificar-producto select,
+  .form-modificar-producto input[type="file"],
+  .btn-guardar-cambios {
+    padding: 8px; /* Menos padding en los inputs y botón */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+  }
+}
+
+/* AGREGAR PRODUCTO */
+/* Estilo para el formulario de agregar producto */
+.form-agregar-producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 500px; /* Máximo ancho del formulario */
+  width: 100%; /* Asegura que el formulario se ajuste a la pantalla */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+.form-agregar-producto label {
+  width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-agregar-producto input[type="text"],
+.form-agregar-producto input[type="number"],
+.form-agregar-producto select,
+.form-agregar-producto input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+/* Estilo para el botón de agregar producto */
+.btn-agregar-producto {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%; /* Botón ocupará todo el ancho disponible */
+}
+
+.btn-agregar-producto:hover {
+  background-color: #218838;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+  .form-agregar-producto {
+    padding: 15px; /* Menos padding en pantallas pequeñas */
+  }
+
+  .form-agregar-producto input[type="text"],
+  .form-agregar-producto input[type="number"],
+  .form-agregar-producto select,
+  .form-agregar-producto input[type="file"],
+  .btn-agregar-producto {
+    padding: 8px; /* Menos padding en los inputs y botón */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+  }
+}
+/* AGREGAR PRODUCTO */
+
+/*CARRITO*/
+.carrito {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.carrito h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabla-carrito {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.tabla-carrito th, .tabla-carrito td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.tabla-carrito th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.tabla-carrito td img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.mensaje-vacio {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.footer-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-confirmar-compra {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-confirmar-compra:hover {
+  background-color: #218838;
+}
+/*CARRITO*/

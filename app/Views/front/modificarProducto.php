@@ -1,21 +1,20 @@
-<h1>Modificar Producto</h1>
-
-<form method="post" action="<?= site_url('modificarProducto'); ?>" enctype="multipart/form-data">
+<form class="form-modificar-producto" method="post" action="<?= site_url('modificarProducto'); ?>"
+    enctype="multipart/form-data">
     <input type="hidden" name="idProducto" value="<?= htmlspecialchars($producto['idProducto']); ?>">
 
-    <label for="descripcion">Descripción:</label>
-    <input type="text" id="descripcion" name="descripcion" value="<?= htmlspecialchars($producto['descripcion']); ?>"
-        required>
+    <label for="productoDescripcion">Descripción:</label>
+    <input type="text" id="productoDescripcion" name="descripcion"
+        value="<?= htmlspecialchars($producto['descripcion']); ?>" required>
 
-    <label for="precioUnit">Precio Unitario:</label>
-    <input type="number" id="precioUnit" name="precioUnit" value="<?= htmlspecialchars($producto['precioUnit']); ?>"
-        required step="0.01">
+    <label for="productoPrecioUnitario">Precio Unitario:</label>
+    <input type="number" id="productoPrecioUnitario" name="precioUnit"
+        value="<?= htmlspecialchars($producto['precioUnit']); ?>" required step="0.01">
 
-    <label for="stock">Stock:</label>
-    <input type="number" id="stock" name="stock" value="<?= htmlspecialchars($producto['stock']); ?>" required>
+    <label for="productoStock">Stock:</label>
+    <input type="number" id="productoStock" name="stock" value="<?= htmlspecialchars($producto['stock']); ?>" required>
 
-    <label for="idCategoria">Categoría:</label>
-    <select id="idCategoria" name="idCategoria" required>
+    <label for="productoCategoria">Categoría:</label>
+    <select id="productoCategoria" name="idCategoria" required>
         <?php foreach ($categorias as $categoria): ?>
         <option value="<?= htmlspecialchars($categoria['idCategoria']); ?>"
             <?= $producto['idCategoria'] == $categoria['idCategoria'] ? 'selected' : ''; ?>>
@@ -24,8 +23,8 @@
         <?php endforeach; ?>
     </select>
 
-    <label for="foto">Foto del Producto:</label>
-    <input type="file" id="foto" name="foto">
+    <label for="productoFoto">Foto del Producto:</label>
+    <input type="file" id="productoFoto" name="foto">
 
-    <button type="submit">Guardar Cambios</button>
+    <button class="btn-guardar-cambios" type="submit">Guardar Cambios</button>
 </form>

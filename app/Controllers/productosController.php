@@ -5,19 +5,22 @@ namespace App\Controllers;
 use App\Models\UsuarioModel;
 use App\Models\ProductoModel;
 use App\Models\CategoriaModel;
-use App\Views\front\agregarProducto;
+use CodeIgniter\Database\Config;
 
 class productosController extends BaseController
 {
+
     protected $productoModel;
     protected $usuarioModel;
     protected $categoriaModel;
+    protected $db;
 
     public function __construct()
     {
         $this->productoModel = new ProductoModel();
         $this->usuarioModel = new UsuarioModel();
         $this->categoriaModel = new CategoriaModel();
+        $this->db = Config::connect(); // Conectar a la base de datos
     }
 
     // Método para cargar la vista de productos
@@ -74,43 +77,73 @@ class productosController extends BaseController
         return $this->categoriaModel->findAll();
     }
 
-    public function eliminarProductos()
+
+    public function cargarVistaModificarProducto($idProducto)
     {
-        // Verificar si se envió la lista de productos seleccionados
-        $productosSeleccionados = $this->request->getPost('productos');
-
-        if (!empty($productosSeleccionados)) {
-            // Iterar sobre los productos seleccionados y eliminarlos
-            foreach ($productosSeleccionados as $idProducto) {
-                $this->productoModel->delete($idProducto); // Eliminar producto de la base de datos
-            }
-
-            // Mensaje de éxito
-            session()->setFlashdata('success', 'Los productos seleccionados fueron eliminados correctamente.');
-        } else {
-            // Mensaje de error
-            session()->setFlashdata('error', 'No se seleccionaron productos para eliminar.');
+        // Verificar si llega el ID
+        if (!$idProducto) {
+            session()->setFlashdata('error', 'No se recibió un ID válido.');
+            return redirect()->to(site_url('productos'));
         }
 
-        // Redirigir a la vista de productos
-        return redirect()->to(site_url('productos'));
-    }
-
-    public function modificarProducto($idProducto)
-    {
-        // Obtener el producto por su ID
+        // Obtener el producto por ID
         $producto = $this->productoModel->find($idProducto);
-
         if (!$producto) {
-            // Si no se encuentra el producto, redirigir con un mensaje de error
             session()->setFlashdata('error', 'Producto no encontrado.');
             return redirect()->to(site_url('productos'));
         }
 
-        // Cargar la vista de edición con los datos del producto
-        return view('modificarProducto', ['producto' => $producto]);
+        // Obtener las categorías
+        $categorias = $this->categoriaModel->findAll();
+
+        // retorna las vistas
+        return view('plantillas/header') .
+            view('plantillas/navbar') .
+            view('front/modificarProducto', [
+                'producto' => $producto,
+                'categorias' => $categorias,
+            ]) .
+            view('plantillas/footer');
     }
-    
+
+    public function modificarProducto()
+    {
+        // Obtener el ID del producto del formulario
+        $idProducto = $this->request->getPost('idProducto');
+
+        // Validar que el ID del producto no esté vacío
+        if (empty($idProducto)) {
+            session()->setFlashdata('error', 'ID de producto no proporcionado.');
+            return redirect()->to(site_url('productos'));
+        }
+
+        // Obtener los datos del formulario
+        $stock = $this->request->getPost('stock');
+        $data = [
+            'descripcion' => $this->request->getPost('descripcion'),
+            'precioUnit' => $this->request->getPost('precioUnit'),
+            'stock' => $stock,
+            'idCategoria' => $this->request->getPost('idCategoria'),
+            // Actualizamos el estado según el stock
+            'idEstado' => ($stock == 0) ? 0 : 1,
+        ];
+
+        // Verificar si se ha enviado un archivo y si es válido
+        $foto = $this->request->getFile('foto');
+        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
+            $foto->move('uploads/productos', $foto->getName());
+            $data['fotoProducto'] = $foto->getName();
+        }
+
+        // Actualizar el producto en la base de datos
+        if ($this->productoModel->update($idProducto, $data)) {
+            session()->setFlashdata('success', 'Producto actualizado correctamente.');
+        } else {
+            session()->setFlashdata('error', 'Error al actualizar el producto.');
+        }
+
+        return redirect()->to(site_url('productos'));
+    }
 
 
     public function guardarProducto()
@@ -122,11 +155,18 @@ class productosController extends BaseController
             'idCategoria' => $this->request->getPost('idCategoria'),
         ];
 
+        // Establecer el estado del producto según el stock
+        if ($data['stock'] == 0) {
+            $data['idEstado'] = 0; // Producto no disponible
+        } else {
+            $data['idEstado'] = 1; // Producto disponible
+        }
+
         // Procesar la subida de imagen si se proporciona
         if ($this->request->getFile('foto')->isValid()) {
             $foto = $this->request->getFile('foto');
             $foto->move('uploads/productos', $foto->getName());
-            $data['foto'] = $foto->getName();
+            $data['fotoProducto'] = $foto->getName(); // Cambiar 'foto' por 'fotoProducto'
         }
 
         // Guardar el producto en la base de datos
@@ -136,6 +176,34 @@ class productosController extends BaseController
             session()->setFlashdata('error', 'Error al agregar el producto.');
         }
 
+        return redirect()->to(site_url('productos'));
+    }
+
+    public function eliminarProductos()
+    {
+        // Obtener los IDs de los productos seleccionados desde el formulario
+        $productosSeleccionados = $this->request->getPost('productos');
+
+        // Verificar si se seleccionaron productos
+        if (empty($productosSeleccionados)) {
+            session()->setFlashdata('error', 'No se seleccionaron productos para eliminar.');
+            return redirect()->to(site_url('productos'));
+        }
+
+        // Datos a actualizar: stock = -1 y estado = 2
+        $data = [
+            'stock' => -1,
+            'idEstado' => 2
+        ];
+
+        // Actualizar los productos seleccionados en la base de datos
+        if ($this->productoModel->whereIn('idProducto', $productosSeleccionados)->set($data)->update()) {
+            session()->setFlashdata('success', 'Productos eliminados correctamente.');
+        } else {
+            session()->setFlashdata('error', 'Error al eliminar los productos seleccionados.');
+        }
+
+        // Redirigir de nuevo a la página de productos
         return redirect()->to(site_url('productos'));
     }
 }

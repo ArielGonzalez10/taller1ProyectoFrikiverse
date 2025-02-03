@@ -1,6 +1,7 @@
 <h1>Agregar Producto</h1>
 
-<form method="post" action="<?= site_url('agregarProducto'); ?>" enctype="multipart/form-data">
+<form method="post" action="<?= site_url('agregarProducto'); ?>" enctype="multipart/form-data"
+    class="form-agregar-producto">
     <label for="descripcion">Descripción:</label>
     <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese la descripción" required>
 
@@ -24,5 +25,5 @@
     <label for="foto">Foto del Producto:</label>
     <input type="file" id="foto" name="foto">
 
-    <button type="submit" class="btn btn-success">Agregar Producto</button>
+    <button type="submit" class="btn-agregar-producto">Agregar Producto</button>
 </form>

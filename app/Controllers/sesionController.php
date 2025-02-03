@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Controllers\BaseController;
 use App\Models\UsuarioModel;
 
@@ -15,14 +17,13 @@ class sesionController extends BaseController
     public function registrarUsuario()
     {
         // Verificar que el formulario fue enviado
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             // Capturar los datos del formulario
             $nombre = trim($this->request->getPost('nombre'));
             $apellido = trim($this->request->getPost('apellido'));
             $email = trim($this->request->getPost('email'));
             $telefono = trim($this->request->getPost('telefono'));
             $password = $this->request->getPost('password');
-            $idRol = 2; // Rol por defecto para usuarios
 
             // Validar datos
             $errores = [];
@@ -44,14 +45,14 @@ class sesionController extends BaseController
                 return redirect()->to('registrarse');
             }
 
-            // Insertar datos en la base de datos
             $data = [
                 'nombre' => $nombre,
                 'apellido' => $apellido,
                 'correoElectronico' => $email,
                 'nroTelefono' => $telefono,
-                'contrasenia' => password_hash($password, PASSWORD_BCRYPT), // Encriptar la contraseña
-                'idRol' => $idRol
+                'contrasenia' => $password,
+                'idRol' => 2, // Rol por defecto para usuarios
+                'idEstadoUsuario' => 1 // Estado activo por defecto
             ];
 
             if ($this->usuarioModel->insert($data)) {
@@ -67,50 +68,58 @@ class sesionController extends BaseController
         return redirect()->to('/registrarse');
     }
 
+
     public function iniciarSesion()
-{
-    // Obtener los datos del formulario
-    $correo = $this->request->getPost('email');
-    $password = $this->request->getPost('password');
+    {
+        // Obtener los datos del formulario
+        $correo = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
 
-    // Verificar que se hayan completado ambos campos
-    if (!$correo || !$password) {
-        session()->setFlashdata('error', 'Debes completar ambos campos.');
-        return redirect()->to('iniciarSesion');
-    }
+        // Verificar que se hayan completado ambos campos
+        if (!$correo || !$password) {
+            session()->setFlashdata('error', 'Debes completar ambos campos.');
+            return redirect()->to('iniciarSesion');
+        }
 
-    // Buscar al usuario en la base de datos
-    $usuario = $this->usuarioModel->where('correoElectronico', $correo)->first();
+        // Buscar al usuario en la base de datos
+        $usuario = $this->usuarioModel->where('correoElectronico', $correo)->first();
 
-    // Verificar las credenciales
-    if ($usuario && $password === $usuario['contrasenia']) { // Comparar sin hashing
-        // Iniciar sesión
-        session()->set('idUsuario', $usuario['idUsuario']);
-        session()->set('idRol', $usuario['idRol']); // Guardar el idRol
-        session()->set('nombre', $usuario['nombre']);
-        session()->set('apellido', $usuario['apellido']);
-        session()->set('nroTelefono', $usuario['nroTelefono']);
-        session()->set('fotoPerfil', $usuario['fotoPerfil']); // Guardar la foto de perfil
+        // Verificar las credenciales
+        if ($usuario) {
+            // Verificar si la cuenta está activa
+            if ($usuario['idEstadoUsuario'] == 0) {
+                session()->setFlashdata('error', 'Tu cuenta está dada de baja. Por favor, contacta al administrador.');
+                return redirect()->to('iniciarSesion');
+            }
 
-        return redirect()->to('principal');
-    } else {
+            if ($password === $usuario['contrasenia']) { // Comparar sin hashing
+                // Iniciar sesión
+                session()->set('idUsuario', $usuario['idUsuario']);
+                session()->set('idRol', $usuario['idRol']); // Guardar el idRol
+                session()->set('nombre', $usuario['nombre']);
+                session()->set('apellido', $usuario['apellido']);
+                session()->set('nroTelefono', $usuario['nroTelefono']);
+                session()->set('fotoPerfil', $usuario['fotoPerfil']); // Guardar la foto de perfil
+
+                return redirect()->to('principal');
+            }
+        }
+
         session()->setFlashdata('error', 'Credenciales inválidas.');
         return redirect()->to('iniciarSesion');
     }
+
+    public function cerrarSesion()
+{
+    // Destruir la sesión actual para cerrar la sesión del usuario
+    $session = session();
+    $session->destroy();
+    
+    // Redirigir al usuario a la página de inicio de sesión
+    return redirect()->to(base_url('iniciarSesion'));
 }
 
 
-    public function cerrarSesion()
-    {
-        // Verifica si hay una sesión activa
-        if (session()->get('idUsuario')) {
-            // Destruir la sesión
-            session()->destroy();
-        }
-
-        // Redirigir a la página de inicio de sesión
-        return redirect()->to('iniciarSesion');
-    }
 
     public function modificarUsuario()
     {

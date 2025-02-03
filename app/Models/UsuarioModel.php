@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UsuarioModel extends Model
 {
-    protected $table = 'usuario'; // Nombre de la tabla en la base de datos
+    protected $table = 'Usuario'; // Nombre de la tabla en la base de datos
     protected $primaryKey = 'idUsuario'; // Clave primaria
 
     // Columnas permitidas para operaciones de inserción y actualización
@@ -15,8 +15,9 @@ class UsuarioModel extends Model
         'apellido',
         'correoElectronico',
         'contrasenia',
-        'nroTelefono',
         'fotoPerfil',
-        'idRol'
+        'nroTelefono',
+        'idRol',
+        'idEstadoUsuario'
     ];
 }

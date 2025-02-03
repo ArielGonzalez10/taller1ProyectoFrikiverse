@@ -114,4 +114,10 @@ class Home extends Controller
             ]) .
             view('plantillas/footer');
     }
+
+    public function carrito()
+    {
+        $data['titulo'] = 'Carrito';
+        return view('plantillas/header', $data) . view('plantillas/navbar') . view('front/carrito') . view('plantillas/footer');
+    }
 }

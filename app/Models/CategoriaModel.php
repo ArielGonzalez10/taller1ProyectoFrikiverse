@@ -6,7 +6,11 @@ use CodeIgniter\Model;
 
 class CategoriaModel extends Model
 {
-    protected $table = 'categoria'; // Cambia 'categoria' por el nombre de tu tabla
-    protected $primaryKey = 'idCategoria';
-    protected $allowedFields = ['idCategoria', 'descripcion']; // Campos permitidos
+    protected $table = 'Categoria'; // Nombre de la tabla en la base de datos
+    protected $primaryKey = 'idCategoria'; // Clave primaria
+
+    // Columnas permitidas para operaciones de inserción y actualización
+    protected $allowedFields = [
+        'descripcion'
+    ];
 }
