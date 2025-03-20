@@ -26,7 +26,7 @@ $routes->post('modificarProducto', 'productosController::modificarProducto'); //
 $routes->post('productos', 'productosController::eliminarProductos'); // Ruta para eliminar producto
 $routes->get('agregarProducto', 'Home::agregarProducto'); // Ruta para cargar el formulario
 $routes->post('agregarProducto', 'productosController::guardarProducto');    // Ruta para guardar el producto
-$routes->get('carrito', 'Home::carrito'); // Ruta para listar productos
-$routes->post('agregarAlCarrito', 'CarritoController::agregarAlCarrito');
-$routes->get('verCarrito', 'CarritoController::verCarrito');
-$routes->post('eliminarDelCarrito', 'CarritoController::eliminarDelCarrito');
+$routes->get('carrito', 'CarritoController::vistaCarrito'); // Ruta para ver el carrito
+$routes->post('agregarAlCarrito', 'CarritoController::agregar');
+$routes->get('verCarrito', 'CarritoController::vistaCarrito');
+$routes->post('eliminarDelCarrito', 'CarritoController::remover_producto');
