@@ -21,10 +21,6 @@
     <?php if (session()->get('idRol') == 1): ?>
     <a href="<?= site_url('agregarProducto'); ?>" class="btn btn-primary">Agregar Producto</a>
     <?php endif; ?>
-
-    <?php if (session()->get('idRol') == 2): ?>
-    <button type="button" class="btn btn-warning" id="agregarCarritoBtn">Agregar al Carrito</button>
-    <?php endif; ?>
 </form>
 
 <form method="post" action="<?= site_url('agregarAlCarrito'); ?>" id="carritoForm">
@@ -32,22 +28,19 @@
         <table class="table-custom">
             <thead>
                 <tr>
-                    <th>Seleccionar</th>
                     <th>Foto</th>
                     <th>Detalles</th>
-                    <?php if (session()->get('idRol') == 1): ?>
-                    <th>Modificar</th>
-                    <?php endif; ?>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (!empty($productos)): ?>
                 <?php foreach ($productos as $producto): ?>
+                <?php if (session()->get('idRol') == 2 && $producto['stock'] == -1): ?>
+                <!-- No mostrar el producto si idRol = 2 y stock = -1 -->
+                <?php continue; ?>
+                <?php endif; ?>
                 <tr>
-                    <td>
-                        <input type="checkbox" name="productos[]"
-                            value="<?= htmlspecialchars($producto['idProducto']); ?>">
-                    </td>
                     <td>
                         <?php if (!empty($producto['fotoProducto'])): ?>
                         <img src="<?= base_url('uploads/productos/' . htmlspecialchars($producto['fotoProducto'])); ?>"
@@ -58,29 +51,42 @@
                     </td>
                     <td>
                         <strong>Descripción:</strong> <?= htmlspecialchars($producto['descripcion']); ?><br>
-                        <strong>Precio Unitario:</strong> <?= htmlspecialchars($producto['precioUnit']); ?><br>
+                        <strong>Precio Unitario:</strong> $<?= htmlspecialchars($producto['precioUnit']); ?><br>
                         <strong>Stock:</strong> <?= htmlspecialchars($producto['stock']); ?><br>
                     </td>
-                    <?php if (session()->get('idRol') == 1): ?>
                     <td>
+                        <?php if (session()->get('idRol') == 2): ?>
+                        <?php if ($producto['stock'] == 0): ?>
+                        <span class="text-danger">No hay stock disponible</span>
+                        <?php else: ?>
+                        <a href="<?= site_url('agregarAlCarrito/' . urlencode($producto['idProducto'])); ?>"
+                            class="btn btn-success">
+                            Agregar al carrito
+                        </a>
+
+                        <?php endif; ?>
+                        <?php elseif (session()->get('idRol') == 1): ?>
                         <a href="<?= site_url('modificarProducto/' . htmlspecialchars($producto['idProducto'])); ?>"
-                            class="btn btn-warning">Modificar</a>
+                            class="btn btn-warning">
+                            Modificar
+                        </a>
+                        <a href="<?= site_url('productosController/eliminarProducto/' . htmlspecialchars($producto['idProducto'])); ?>"
+                            class="btn btn-danger"
+                            onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
+                            Eliminar
+                        </a>
+                        <?php endif; ?>
                     </td>
-                    <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
                 <?php else: ?>
                 <tr>
-                    <td colspan="<?= session()->get('idRol') == 1 ? '4' : '3'; ?>">No hay productos disponibles</td>
+                    <td colspan="3">No hay productos disponibles</td>
                 </tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
-
-    <?php if (session()->get('idRol') == 1): ?>
-    <button type="submit" class="btn btn-danger">Eliminar Seleccionados</button>
-    <?php endif; ?>
 </form>
 
 <script>

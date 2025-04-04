@@ -121,65 +121,68 @@ class sesionController extends BaseController
 
 
 
-    public function modificarUsuario()
-    {
-        // Obtener el ID del usuario desde la sesión
-        $idUsuario = session('idUsuario');
+public function modificarUsuario()
+{
+    // Obtener el ID del usuario desde la sesión
+    $idUsuario = session('idUsuario');
 
-        if (!$idUsuario) {
-            return redirect()->to('iniciarSesion')->with('error', 'Debes iniciar sesión para realizar esta acción.');
-        }
-
-        // Obtener datos del formulario
-        $nombre = $this->request->getPost('nombre');
-        $apellido = $this->request->getPost('apellido');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $nroTelefono = $this->request->getPost('nroTelefono');
-        $profileImage = $this->request->getFile('profileImage');
-
-        // Validar el número de teléfono
-        if (!ctype_digit($nroTelefono)) {
-            return redirect()->back()->with('error', 'El número de teléfono debe contener solo dígitos.');
-        }
-        $nroTelefono = intval($nroTelefono);
-
-        // Validar y procesar la imagen (si fue enviada)
-        $imagePath = null;
-        if ($profileImage && $profileImage->isValid()) {
-            $imagePath = 'uploads/perfiles/' . $profileImage->getRandomName();
-            $profileImage->move('uploads/perfiles', $imagePath);
-        }
-
-        // Datos a actualizar
-        $data = [
-            'nombre' => $nombre,
-            'apellido' => $apellido,
-            'correoElectronico' => $email,
-            'nroTelefono' => $nroTelefono,
-        ];
-
-        // Si hay imagen, agregarla al array
-        if ($imagePath) {
-            $data['fotoPerfil'] = $imagePath;
-        }
-
-        // Solo actualizar la contraseña si se ha ingresado una nueva
-        if (!empty($password)) {
-            $data['contrasenia'] = password_hash($password, PASSWORD_BCRYPT); // Encriptar la nueva contraseña
-        }
-
-        // Actualizar datos en la base de datos
-        $this->usuarioModel->update($idUsuario, $data);
-
-        // Actualizar los datos de la sesión
-        session()->set('nombre', $nombre);
-        session()->set('apellido', $apellido);
-        session()->set('nroTelefono', $nroTelefono);
-        if ($imagePath) {
-            session()->set('fotoPerfil', $imagePath);
-        }
-
-        return redirect()->to('principal')->with('mensaje', 'Datos actualizados correctamente.');
+    // Verificar si el ID del usuario está disponible en la sesión
+    if (!$idUsuario) {
+        session()->setFlashdata('error', 'Debes iniciar sesión para realizar esta acción.');
+        return redirect()->to('iniciarSesion');
     }
+
+    // Obtener datos del formulario
+    $nombre = $this->request->getPost('nombre');
+    $apellido = $this->request->getPost('apellido');
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('password');
+    $nroTelefono = $this->request->getPost('nroTelefono');
+    $profileImage = $this->request->getFile('profileImage');
+
+    // Validar el número de teléfono
+    if (!ctype_digit($nroTelefono)) {
+        return redirect()->back()->with('error', 'El número de teléfono debe contener solo dígitos.');
+    }
+    $nroTelefono = intval($nroTelefono);
+
+    // Validar y procesar la imagen (si fue enviada)
+    $imagePath = null;
+    if ($profileImage && $profileImage->isValid()) {
+        $imagePath = 'uploads/perfiles/' . $profileImage->getRandomName();
+        $profileImage->move('uploads/perfiles', $imagePath);
+    }
+
+    // Datos a actualizar
+    $data = [
+        'nombre' => $nombre,
+        'apellido' => $apellido,
+        'correoElectronico' => $email,
+        'nroTelefono' => $nroTelefono,
+    ];
+
+    // Si hay imagen, agregarla al array
+    if ($imagePath) {
+        $data['fotoPerfil'] = $imagePath;
+    }
+
+    // Solo actualizar la contraseña si se ha ingresado una nueva
+    if (!empty($password)) {
+        $data['contrasenia'] = password_hash($password, PASSWORD_BCRYPT); // Encriptar la nueva contraseña
+    }
+
+    // Actualizar datos en la base de datos
+    $this->usuarioModel->update($idUsuario, $data);
+
+    // Actualizar los datos de la sesión
+    session()->set('nombre', $nombre);
+    session()->set('apellido', $apellido);
+    session()->set('nroTelefono', $nroTelefono);
+    if ($imagePath) {
+        session()->set('fotoPerfil', $imagePath);
+    }
+
+    return redirect()->to('principal')->with('mensaje', 'Datos actualizados correctamente.');
+}
+
 }

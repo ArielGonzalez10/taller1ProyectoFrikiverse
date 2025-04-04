@@ -36,5 +36,4 @@ class Services extends CoreServices
         }
         return new \CodeIgniterCart\Cart();
     }
-    
 }

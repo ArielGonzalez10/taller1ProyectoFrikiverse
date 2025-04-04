@@ -179,31 +179,29 @@ class productosController extends BaseController
         return redirect()->to(site_url('productos'));
     }
 
-    public function eliminarProductos()
-    {
-        // Obtener los IDs de los productos seleccionados desde el formulario
-        $productosSeleccionados = $this->request->getPost('productos');
-
-        // Verificar si se seleccionaron productos
-        if (empty($productosSeleccionados)) {
-            session()->setFlashdata('error', 'No se seleccionaron productos para eliminar.');
-            return redirect()->to(site_url('productos'));
-        }
-
-        // Datos a actualizar: stock = -1 y estado = 2
-        $data = [
-            'stock' => -1,
-            'idEstado' => 2
-        ];
-
-        // Actualizar los productos seleccionados en la base de datos
-        if ($this->productoModel->whereIn('idProducto', $productosSeleccionados)->set($data)->update()) {
-            session()->setFlashdata('success', 'Productos eliminados correctamente.');
-        } else {
-            session()->setFlashdata('error', 'Error al eliminar los productos seleccionados.');
-        }
-
-        // Redirigir de nuevo a la página de productos
+    public function eliminarProducto($idProducto)
+{
+    // Verificar si se recibió un ID de producto
+    if (empty($idProducto)) {
+        session()->setFlashdata('error', 'No se seleccionó ningún producto para eliminar.');
         return redirect()->to(site_url('productos'));
     }
+
+    // Datos a actualizar: stock = -1 y estado = 2
+    $data = [
+        'stock' => -1,
+        'idEstado' => 0
+    ];
+
+    // Actualizar el producto en la base de datos
+    if ($this->productoModel->where('idProducto', $idProducto)->set($data)->update()) {
+        session()->setFlashdata('success', 'Producto eliminado correctamente.');
+    } else {
+        session()->setFlashdata('error', 'Error al eliminar el producto.');
+    }
+
+    // Redirigir de nuevo a la página de productos
+    return redirect()->to(site_url('productos'));
+}
+
 }
